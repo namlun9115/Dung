@@ -56,7 +56,9 @@
   - name: rsync wordpress
     shell: rsync -avP /root/wordpress/ /var/www/html/
   - name: Create folder uploads
-    shell: mkdir /var/www/html/wp-content/uploads
+    file:
+      path: /var/www/html/wp-content/uploads
+      state: directory
   - name: Set user:group
     shell: chown -R apache:apache /var/www/html/*
 
